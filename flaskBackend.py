@@ -16,20 +16,10 @@ def login(username="tawzz"):
 def templ(fname='test'):
   return render_template(fname+'.yml')
 
+@app.route('/playerInit/username/<username>')
+def playerInit(username="tawzz"):
+  return 'Axis'  #example
 
-
-
-#************* testing ******************
-#testing multiple params
-@app.route('/login2/choice1/<choice1>/choice2/<choice2>')
-def login2(choice1="das",choice2="U"):
-    return choice1 + ' has logged in as ' + choice2
-
-#testing static file response
-@app.route("/gameSetup")
-def gameSetup():
-  #return render_template('index.html') #geht
-  return render_template('map_pos.yml') #geht
 
 if __name__ == "__main__":
   app.run()
