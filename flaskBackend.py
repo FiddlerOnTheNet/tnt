@@ -12,13 +12,14 @@ def hello():
 def login(username="tawzz"):
     return username + ' has logged in ' 
 
+#this route can fetch any static file
 @app.route("/templ/fname/<fname>")
 def templ(fname='test'):
   return render_template(fname+'.yml')
 
 @app.route('/playerInit/username/<username>')
 def playerInit(username="tawzz"):
-  return 'Axis'  #example
+  return 'West'  #example
 
 
 if __name__ == "__main__":
