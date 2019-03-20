@@ -19,7 +19,7 @@ def templ(fname='test'):
 
 @app.route('/playerInit/username/<username>')
 def playerInit(username="tawzz"):
-  return 'West'  #example
+  return 'Axis'  #example
 
 
 if __name__ == "__main__":

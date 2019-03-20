@@ -1,0 +1,204 @@
+
+
+action_cards:
+  seasons:
+    spring:
+      num_wildcards: 3
+      count: 15
+      priorities: [A,B,C,D,E,F,G,H,I,J,K,L,M,N,O,P]
+      commands:
+        4: 6
+        5: 6
+        6: 3
+    summer:
+      num_wildcards: 6
+      count: 25
+      priorities: [A,B,C,D,E,F,G,H,I,J,K,L,M,N,O,P,Q,R,S,T,U,V,W,X,Y,Z]
+      commands:
+        6: 5
+        7: 5
+        8: 6
+        9: 6
+        10: 3
+    fall:
+      num_wildcards: 3
+      count: 15
+      priorities: [A,B,C,D,E,F,G,H,I,J,K,L,M,N,O,P]
+      commands:
+        6: 6
+        7: 6
+        8: 3
+
+  wildcards:
+    Guarantee:
+      count: 1
+      message: Add 1 friendly (or remove one rival) influence to any neutral minor that shares a border with a rival's homeland
+    Foreign Aid:
+      count: 1
+      message: Decrease friendly IND by 1 and then add 1 friendly (or remove one rival) influence to any neutral minor.
+    Intimidation:
+      count: 1
+      message: Remove one rival influence to any neutral minor that shares a border with your faction's homeland
+    Ethnic Ties:
+      count: 1
+      message: Add 1 friendly (or remove one rival) influence to a nation listed below, next to your faction
+      West: [Norway, Romania, Low Countries, Romania, USA]
+      Axis: [Sweden, Norway, Austria]
+      USSR: [Poland, Bulgaria, Yugoslavia]
+    Birds of a Feather 1:
+      count: 1
+      message: Add 1 friendly (or remove one rival) influence to a nation listed below, next to your faction
+      West: [Sweden, Denmark, Norway, USA]
+      Axis: [Baltic States, Portugal, Poland, Spain]
+      USSR: [Spain]
+    Birds of a Feather 2:
+      count: 1
+      message: Add 1 friendly (or remove one rival) influence to a nation listed below, next to your faction
+      West: [Denmark, USA, Low Countries]
+      Axis: [Spain, Bulgaria, Latin America]
+      USSR: [Spain]
+    Isolationism:
+      count: 2
+      message: Remove one rival influence from any neutral minor listed below
+      options: [USA, Spain, Sweden, Poland, Turkey, Low Countries]
+    Fear and Loathing:
+      count: 1
+      message: Remove one rival influence to a nation listed below, next to a rival faction
+      West: [Persia, Turkey, Bulgaria, Latin America, Hungary, Austria]
+      Axis: [Yugoslavia, Czechoslovakia, USA, Romania, Low Countries, Norway, Poland]
+      USSR: [Baltic States, Sweden, Turkey, Poland, Finland, Romania, USA]
+    Brothers in Arms:
+      count: 1
+      message: Add 1 friendly (or remove one rival) influence to a nation listed below, next to your faction
+      West: [Low Countries, Romania, USA]
+      Axis: [Bulgaria, Hungary, Austria]
+      USSR: [Spain, Czechoslovakia]
+    Versailles:
+      count: 1
+      message: Add 1 friendly (or remove one rival) influence to a nation listed below, next to your faction
+      West: [Poland, Czechoslovakia]
+      Axis: [Turkey, Hungary, Austria]
+      USSR: [Yugoslavia]
+    Ties that Bind:
+      count: 1
+      message: Add 1 friendly (or remove one rival) influence to a nation listed below, next to your faction
+      West: [Low Countries, USA, Czechoslovakia]
+      Axis: [Bulgaria, Hungary, Austria]
+      USSR: [Spain, Yugoslavia]
+
+  diplomacy:
+    Baltic States: 2
+    Persia: 2
+    Sweden: 3
+    Turkey: 3
+    Portugal: 3
+    Poland: 3
+    Afghanistan: 3
+    Denmark: 3
+    Norway: 3
+    Low Countries: 4
+    Spain: 4
+    Bulgaria: 4
+    Finland: 4
+    Romania: 5
+    USA: 5
+    Latin America: 5
+    Greece: 6
+    Hungary: 6
+    Austria: 6
+    Czechoslovakia: 6
+    Yugoslavia: 6
+
+investment_cards:
+
+  factory_levels:
+    4: 7
+    3: 22
+    2: 16
+    1: 10
+
+  intelligence:
+    Spy Rings:
+      count: 2
+      effect: blindly steal card
+    Code Breaking:
+      count: 2
+      effect: inspect rival hand
+    Agent:
+      count: 2
+      effect: inspect rival units on one tile
+    Sabotage:
+      count: 1
+      effect: reduce rival influence by 1
+    Coup:
+      count: 1
+      effect: remove all rival influence from 1 neutral minor
+    Double Agent:
+      count: 1
+      effect: reverse Intel card effect
+    Mole:
+      count: 1
+      effect: inspect secret vault, and steal tech (achieve a tech in the vault by pairing with one of your cards)
+
+  technologies:
+    Atomic Research 4:
+      count: 2
+      effect: Implosion trigger - wins game
+    Atomic Research 3:
+      count: 3
+      effect: Plutonium - allows step 4
+    Atomic Research 2:
+      count: 3
+      effect: Breeder Reactor - allows step 3
+    Atomic Research 1:
+      count: 5
+      effect: Atomic Pile - allows step 2
+    Jets:
+      count: 4
+      effect: AFs FirstFire
+    Rocket Artillery:
+      count: 6
+      effect: Infantry FirstFire
+    LSTs:
+      count: 7
+      effect: 2 invaders per border
+    Heavy Bombers:
+      count: 7
+      effect: AFs move 3
+    Motorized Infantry:
+      count: 7
+      effect: Infantry moves 3
+    Heavy Tanks:
+      count: 8
+      effect: Tanks FirstFire
+    Precision Bombsight:
+      count: 9
+      effect: AF can bomb IND
+    Air Defense Radar:
+      count: 9
+      effect: AFs 2A3 in friendly territory
+    Naval Radar:
+      count: 9
+      effect: Fleets FirstFire
+    Sonar:
+      count: 11
+      effect: Fleet S3
+    Industrial Espionage:
+      count: 5
+      effect: pair with revealed tech to achieve tech
+
+    1939 Science:
+      count: 1
+      techs: [Atomic Research 1, Air Defense Radar, Naval Radar, Sonar, Precision Bombsights]
+    1941 Science:
+      count: 1
+      techs: [Motorized Infantry, Precision Bombsights, Rocket Artillery, Heavy Tanks, Motorized Infantry]
+    1943 Science:
+      count: 1
+      techs: [Atomic Research 2, Sonar, Motorized Infantry, Heavy Bombers, Air Defense Radar]
+    1944 Science:
+      count: 1
+      techs: [Atomic Research 3, LSTs, Naval Radar, Rocket Artillery, Jets]
+    1945 Science:
+      count: 1
+      techs: [Atomic Research 4, LSTs, Heavy Tanks, Jets, Heavy Bombers]
