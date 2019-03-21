@@ -60,7 +60,7 @@ Infantry:
   G: 3
   S: 0
 Convoy:
-  carrying: --carry_type--
+  not_placeable: 1
   priority: 8
   doubleHit: 1
   type: 'N'

@@ -1,8 +1,7 @@
-from flask import Flask, render_template
-from flask_cors import CORS #needed for cross origin access
-
-app = Flask(__name__)
-CORS(app) #needed for cross origin access
+from flask import Flask, render_template, send_from_directory
+from flask_cors import CORS
+app = Flask(__name__, static_folder='static')
+CORS(app)
 
 @app.route("/")
 def hello():
@@ -10,17 +9,16 @@ def hello():
 
 @app.route('/login/username/<username>')
 def login(username="tawzz"):
-    return username + ' has logged in ' 
+    return username + ' has logged in '
 
-#this route can fetch any static file
-@app.route("/templ/fname/<fname>")
-def templ(fname='test'):
-  return render_template(fname+'.yml')
+@app.route('/please/<fname>')
+def pleaseWork(fname):
+    return send_from_directory(app.static_folder, fname)
 
 @app.route('/playerInit/username/<username>')
-def playerInit(username="tawzz"):
-  return 'Axis'  #example
+def playerFaction(username="tawzz"):
+    return 'USSR'
 
-
+#das brauch ich um es local laufen zu lassen
 if __name__ == "__main__":
   app.run()
