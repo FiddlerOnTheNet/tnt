@@ -78,8 +78,8 @@ class MSManager {
     let elem = this.createCadreSvg(power, unit, cv, SZ.cadrePrototype);
     let cadre = new MS(id);
     cadre.setElement(elem, 100, 100);
-    cadre.interactiveChild = cadre.elem.getElementsByClassName('overlay')[0];
-console.log('creating cadre proto ',id);
+    cadre.interactiveChild = cadre.elem.getElementsByClassName("overlay")[0];
+    console.log("creating cadre proto ", id);
     console.log(cadre.interactiveChild);
     cadre.elem.addEventListener("click", this.clickHandler.bind(this));
     this.byId[id] = {ms: cadre, type: "proto"};
@@ -207,11 +207,12 @@ console.log('creating cadre proto ',id);
 
   //not yet implemented
   createCadre(id, power, unit) {
-    //hier create ich ein g cadre
-    let elem = this.createCadreG(power, unit, 1, SZ.cadrePrototype);
-    let cadre = new MS(id, board);
-    cadre.setElement(elem, 100, 100);
-    this.byId[id] = cadre;
+    // let elem = this.createCadreG(power, unit, 1, 50);
+    // let cadre = new MS(id, board);
+    // cadre.setElement(elem, 50, 50);
+    // this.byId[id] = cadre;
+
+    let cadre = new MS(id,board).roundedRect().circle();
     return cadre;
   }
   create(id, typelist, parent, sz) {}
@@ -485,7 +486,8 @@ console.log('creating cadre proto ',id);
     return res;
   }
   placeCadre(msCadre, msRegion) {
-    msCadre.setPos(msRegion.x, msRegion.y).draw();
+
+    //msCadre.setPos(msRegion.x,msRegion.y).draw();
     msCadre.tag("region", msRegion.id);
   }
   action(command, newId, ids) {
@@ -500,9 +502,9 @@ console.log('creating cadre proto ',id);
         let power = this.getByType(primitiveIds, "power");
         let unit = this.getByType(primitiveIds, "unit");
         //create board cadre from proto
-        let msCadre = this.createCadre(newId, power, unit);
+        //let msCadre = this.createCadre(newId, power, unit);
         // place cadre on region
-        this.placeCadre(msCadre, msRegion);
+        //this.placeCadre(msCadre, msRegion);
     }
   }
 }

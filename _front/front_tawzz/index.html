@@ -15,6 +15,7 @@
       </svg>
 
       <div id="troopDisplay" class="popupStyle gridContainer hCenterScreen"></div>
+      <div id='submitButton' class='centerScreen hidden'><button onclick="submitChoice()">Submit</button></div>
     </div>
     <div id="cardDisplay">card display</div> 
     <!-- #endregion html -->
@@ -185,6 +186,15 @@
 
     <!-- #region *** TESTING *** -->
     <script>
+      var fakeIdCounter=0;
+      var SelectedIds=undefined;
+      function showSubmitButton(selectedList){
+        SelectedIds = selectedList;
+        document.getElementById('submitButton').classList.remove('hidden');
+      }
+      function submitChoice(){
+        console.log('submitted');
+      }
       function Start(dataFromServer) {
         //testCadrePrototypeDisplay(); //geht
         //testServerData(dataFromServer); //geht
@@ -208,12 +218,11 @@
         newServerTree.print();
         return newServerTree;
       }
-      var fakeIdCounter=0;
       function doAction(dataFromServer,involvedIds){
         // assume action is permitted
         //for now use fake dataFromServer
         let command = 'placeCadre'; // TODO: somehow extract from dataFromServer
-        let newId = 'id_'+fakeIdCounter;
+        let newId = 'id_'+fakeIdCounter; fakeIdCounter+=1;
         Manager.action(command,newId,involvedIds); 
       }
 
@@ -235,8 +244,10 @@
           let selectedIds = Manager.transformToIds(selectedLabels);
           console.log('selected ids:',selectedIds)
 
+          //soll ja nur den submit button displayen!!!
+          showSubmitButton(selectedIds);
           
-          sendAction(playerFaction,selectedLabels,selectedIds); //selectedIds oder selectedLabels?
+          // sendAction(playerFaction,selectedLabels,selectedIds); //selectedIds oder selectedLabels?
         } else {
           // unselect unchose objects that are selected
           let idlists = Selection.getChoices();
