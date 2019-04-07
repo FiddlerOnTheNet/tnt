@@ -1,0 +1,48 @@
+Germany:
+  Infantry: 16
+  Fortress: 8
+  Tank: 8
+  AirForce: 8
+  Fleet: 6
+  Carrier: 2
+  Submarine: 8
+Italy:
+  Infantry: 6
+  Fortress: 2
+  Tank: 2
+  AirForce: 3
+  Fleet: 4
+  Carrier: 1
+  Submarine: 2
+USSR:
+  Infantry: 16
+  Fortress: 6
+  Tank: 8
+  AirForce: 6
+  Fleet: 4
+  Carrier: 2
+  Submarine: 2
+Britain:
+  Infantry: 6
+  Fortress: 6
+  Tank: 3
+  AirForce: 4
+  Fleet: 6
+  Carrier: 2
+  Submarine: 3
+France:
+  Infantry: 6
+  Fortress: 3
+  Tank: 2
+  AirForce: 3
+  Fleet: 4
+  Carrier: 1
+  Submarine: 1
+USA:
+  Infantry: 4
+  Fortress: 2
+  Tank: 4
+  AirForce: 4
+  Fleet: 4
+  Carrier: 1
+  Submarine: 1

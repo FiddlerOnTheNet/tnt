@@ -1,0 +1,687 @@
+
+Ottawa:
+  type: land
+  alligence: Canada
+  res: 1
+  pop: 0
+  muster: 1
+New York:
+  type: land
+  alligence: USA
+  res: 2
+  pop: 1
+  muster: 2
+Washington:
+  type: land
+  alligence: USA
+  res: 2
+  pop: 2
+  muster: 3
+Irish Sea:
+  type: Sea
+North Atlantic Ocean:
+  type: Ocean
+Mid Atlantic Ocean:
+  type: Ocean
+South Atlantic Ocean:
+  type: Ocean
+Rio de Janeiro:
+  type: land
+  alligence: Latin America
+  res: 2
+  pop: 0
+  muster: 1
+Dakar:
+  type: land
+  alligence: French North Africa
+  res: 0
+  pop: 0
+  muster: 0
+Morocco:
+  type: land
+  alligence: French North Africa
+  res: 0
+  pop: 0
+  muster: 0
+Algiers:
+  type: land
+  alligence: French North Africa
+  res: 0
+  pop: 1
+  muster: 2
+Tunisia:
+  type: land
+  alligence: French North Africa
+  res: 0
+  pop: 0
+  muster: 0
+Sfax:
+  type: land
+  alligence: French North Africa
+  res: 0
+  pop: 0
+  muster: 0
+Gibraltar:
+  type: land
+  alligence: Gibraltar
+  res: 0
+  pop: 0
+  muster: 1
+Madeira Sea:
+  type: Sea
+Lisbon:
+  type: land
+  alligence: Portugal
+  res: 1
+  pop: 0
+  muster: 1
+Madrid:
+  type: land
+  alligence: Spain
+  res: 0
+  pop: 1
+  muster: 3
+Leon:
+  type: land
+  alligence: Spain
+  res: 0
+  pop: 0
+  muster: 0
+Barcelona:
+  type: land
+  alligence: Spain
+  res: 0
+  pop: 1
+  muster: 0
+Azores:
+  type: land
+  alligence: Portugal
+  res: 0
+  pop: 0
+  muster: 0
+Bay of Biscay:
+  type: Sea
+Dublin:
+  type: land
+  alligence: Ireland
+  res: 0
+  pop: 0
+  muster: 1
+Irminger Sea:
+  type: Sea
+Iceland:
+  type: land
+  alligence: Denmark
+  res: 0
+  pop: 0
+  muster: 0
+Greenland Sea:
+  type: Sea
+Norwegian Sea:
+  type: Sea
+Nordkapp Sea:
+  type: Sea
+North Sea:
+  type: Sea
+English Channel:
+  type: Sea
+Glasgow:
+  type: land
+  alligence: Britain
+  res: 1
+  pop: 1
+  muster: 2
+London:
+  type: land
+  alligence: Britain
+  res: 1
+  pop: 3
+  muster: 3
+Paris:
+  type: land
+  alligence: France
+  res: 0
+  pop: 2
+  muster: 3
+Lorraine:
+  type: land
+  alligence: France
+  res: 2
+  pop: 0
+  muster: 0
+Gascony:
+  type: land
+  alligence: France
+  res: 0
+  pop: 0
+  muster: 0
+Marseille:
+  type: land
+  alligence: France
+  res: 0
+  pop: 1
+  muster: 2
+Western Mediterranean:
+  type: Sea
+Sardinia:
+  type: land
+  alligence: Italy
+  res: 0
+  pop: 0
+  muster: 0
+Tyrrhenian Sea:
+  type: Sea
+Malta:
+  type: land
+  alligence: Malta
+  res: 0
+  pop: 0
+  muster: 1
+Sicily:
+  type: land
+  alligence: Italy
+  res: 0
+  pop: 0
+  muster: 0
+Central Mediterranean:
+  type: Sea
+Adriatic Sea:
+  type: Sea
+Milan:
+  type: land
+  alligence: Italy
+  res: 1
+  pop: 1
+  muster: 2
+Rome:
+  type: land
+  alligence: Italy
+  res: 0
+  pop: 2
+  muster: 3
+Venice:
+  type: land
+  alligence: Italy
+  res: 1
+  pop: 0
+  muster: 0
+Taranto:
+  type: land
+  alligence: Italy
+  res: 0
+  pop: 0
+  muster: 0
+Tripoli:
+  type: land
+  alligence: Libya
+  res: 0
+  pop: 1
+  muster: 2
+Cyrenaica:
+  type: land
+  alligence: Libya
+  res: 0
+  pop: 0
+  muster: 0
+Amsterdam:
+  type: land
+  alligence: Low Countries
+  res: 0
+  pop: 1
+  muster: 2
+Vienna:
+  type: land
+  alligence: Austria
+  res: 0
+  pop: 1
+  muster: 2
+Munich:
+  type: land
+  alligence: Germany
+  res: 0
+  pop: 1
+  muster: 2
+Ruhr:
+  type: land
+  alligence: Germany
+  res: 3
+  pop: 2
+  muster: 3
+Berlin:
+  type: land
+  alligence: Germany
+  res: 1
+  pop: 3
+  muster: 3
+Copenhagen:
+  type: land
+  alligence: Denmark
+  res: 1
+  pop: 0
+  muster: 1
+Oslo:
+  type: land
+  alligence: Norway
+  res: 1
+  pop: 0
+  muster: 1
+Narvik:
+  type: land
+  alligence: Norway
+  res: 0
+  pop: 0
+  muster: 0
+Gallivare:
+  type: land
+  alligence: Sweden
+  res: 1
+  pop: 0
+  muster: 0
+Stockholm:
+  type: land
+  alligence: Sweden
+  res: 1
+  pop: 1
+  muster: 2
+Petsamo:
+  type: land
+  alligence: Finland
+  res: 1
+  pop: 0
+  muster: 0
+Helsinki:
+  type: land
+  alligence: Finland
+  res: 0
+  pop: 0
+  muster: 1
+Barents Sea:
+  type: Sea
+White Sea:
+  type: Sea
+Gulf of Bothnia:
+  type: Sea
+Baltic Sea:
+  type: Sea
+Riga:
+  type: land
+  alligence: Baltic States
+  res: 0
+  pop: 0
+  muster: 1
+Konigsberg:
+  type: land
+  alligence: Germany
+  res: 0
+  pop: 1
+  muster: 2
+Warsaw:
+  type: land
+  alligence: Poland
+  res: 1
+  pop: 1
+  muster: 3
+Vilna:
+  type: land
+  alligence: Poland
+  res: 0
+  pop: 0
+  muster: 1
+Lvov:
+  type: land
+  alligence: Poland
+  res: 0
+  pop: 1
+  muster: 2
+Prague:
+  type: land
+  alligence: Czechoslovakia
+  res: 0
+  pop: 1
+  muster: 2
+Budapest:
+  type: land
+  alligence: Hungary
+  res: 1
+  pop: 1
+  muster: 2
+Croatia:
+  type: land
+  alligence: Yugoslavia
+  res: 1
+  pop: 0
+  muster: 0
+Belgrade:
+  type: land
+  alligence: Yugoslavia
+  res: 0
+  pop: 0
+  muster: 1
+Albania:
+  type: land
+  alligence: Albania
+  res: 0
+  pop: 0
+  muster: 0
+Athens:
+  type: land
+  alligence: Greece
+  res: 1
+  pop: 0
+  muster: 1
+Bucharest:
+  type: land
+  alligence: Rumania
+  res: 2
+  pop: 1
+  muster: 2
+Sofia:
+  type: land
+  alligence: Bulgaria
+  res: 1
+  pop: 0
+  muster: 1
+Aegean Sea:
+  type: Sea
+Crete:
+  type: Sea
+Eastern Mediterranean:
+  type: Sea
+Egypt:
+  type: land
+  alligence: Middle East
+  res: 0
+  pop: 0
+  muster: 0
+Suez:
+  type: land
+  alligence: Middle East
+  res: 0
+  pop: 1
+  muster: 2
+Sudan:
+  type: land
+  alligence: Middle East
+  res: 0
+  pop: 0
+  muster: 0
+Jordan:
+  type: land
+  alligence: Middle East
+  res: 0
+  pop: 0
+  muster: 0
+Iraq:
+  type: land
+  alligence: Middle East
+  res: 1
+  res_afr: 1
+  pop: 0
+  muster: 0
+Damascus:
+  type: land
+  alligence: Syria
+  res: 0
+  pop: 0
+  muster: 1
+Red Sea:
+  type: Sea
+Gulf of Aden:
+  type: Sea
+West Indian Ocean:
+  type: Sea
+East Indian Ocean:
+  type: Sea
+Arabian Sea:
+  type: Sea
+Persian Gulf:
+  type: Sea
+Bombay:
+  type: land
+  alligence: India
+  res: 1
+  res_afr: 1
+  pop: 1
+  muster: 2
+Karachi:
+  type: land
+  alligence: India
+  res: 0
+  res_afr: 0
+  pop: 0
+  muster: 0
+Delhi:
+  type: land
+  alligence: India
+  res: 1
+  res_afr: 1
+  pop: 2
+  muster: 3
+Kabul:
+  type: land
+  alligence: Afghanistan
+  res: 0
+  pop: 0
+  muster: 1
+Shiraz:
+  type: land
+  alligence: Persia
+  res: 0
+  pop: 0
+  muster: 0
+Tehran:
+  type: land
+  alligence: Persia
+  res: 0
+  pop: 1
+  muster: 2
+Abadan:
+  type: land
+  alligence: Persia
+  res: 2
+  res_afr: 2
+  pop: 0
+  muster: 0
+Tabriz:
+  type: land
+  alligence: Persia
+  res: 0
+  pop: 0
+  muster: 0
+Kars:
+  type: land
+  alligence: Turkey
+  res: 0
+  pop: 0
+  muster: 0
+Sinope:
+  type: land
+  alligence: Turkey
+  res: 0
+  pop: 0
+  muster: 0
+Adana:
+  type: land
+  alligence: Turkey
+  res: 0
+  pop: 0
+  muster: 0
+Ankara:
+  type: land
+  alligence: Turkey
+  res: 0
+  pop: 1
+  muster: 3
+Izmir:
+  type: land
+  alligence: Turkey
+  res: 1
+  pop: 0
+  muster: 1
+Istanbul:
+  type: land
+  alligence: Turkey
+  res: 0
+  pop: 1
+  muster: 2
+Southern Caspian Sea:
+  type: Sea
+Northern Caspian Sea:
+  type: Sea
+Eastern Black Sea:
+  type: Sea
+Western Black Sea:
+  type: Sea
+Sea of Azov:
+  type: Sea
+Archangel:
+  type: land
+  alligence: USSR
+  res: 0
+  pop: 0
+  muster: 0
+Vologda:
+  type: land
+  alligence: USSR
+  res: 0
+  pop: 0
+  muster: 0
+Gorky:
+  type: land
+  alligence: USSR
+  res: 0
+  pop: 0
+  muster: 0
+Perm:
+  type: land
+  alligence: USSR
+  res: 0
+  pop: 0
+  muster: 0
+Urals:
+  type: land
+  alligence: USSR
+  res: 1
+  pop: 1
+  muster: 2
+Western Siberia:
+  type: land
+  alligence: USSR
+  res: 1
+  pop: 0
+  muster: 0
+Leningrad:
+  type: land
+  alligence: USSR
+  res: 0
+  pop: 2
+  muster: 3
+Moscow:
+  type: land
+  alligence: USSR
+  res: 0
+  pop: 3
+  muster: 3
+Murmansk:
+  type: land
+  alligence: USSR
+  res: 0
+  pop: 0
+  muster: 0
+Penza:
+  type: land
+  alligence: USSR
+  res: 0
+  pop: 0
+  muster: 0
+Ufa:
+  type: land
+  alligence: USSR
+  res: 1
+  pop: 0
+  muster: 0
+Kazakhstan:
+  type: land
+  alligence: USSR
+  res: 0
+  pop: 0
+  muster: 0
+Belorussia:
+  type: land
+  alligence: USSR
+  res: 0
+  pop: 0
+  muster: 0
+Bryansk:
+  type: land
+  alligence: USSR
+  res: 0
+  pop: 0
+  muster: 0
+Voronezh:
+  type: land
+  alligence: USSR
+  res: 0
+  pop: 0
+  muster: 0
+Stalingrad:
+  type: land
+  alligence: USSR
+  res: 0
+  pop: 1
+  muster: 2
+Grozny:
+  type: land
+  alligence: USSR
+  res: 0
+  pop: 0
+  muster: 0
+Turkmenistan:
+  type: land
+  alligence: USSR
+  res: 0
+  pop: 0
+  muster: 0
+Kuban:
+  type: land
+  alligence: USSR
+  res: 0
+  pop: 0
+  muster: 0
+Georgia:
+  type: land
+  alligence: USSR
+  res: 0
+  pop: 0
+  muster: 0
+Baku:
+  type: land
+  alligence: USSR
+  res: 3
+  res_afr: 1
+  pop: 2
+  muster: 3
+Kiev:
+  type: land
+  alligence: USSR
+  res: 1
+  pop: 1
+  muster: 2
+Kharkov:
+  type: land
+  alligence: USSR
+  res: 1
+  pop: 1
+  muster: 2
+Odessa:
+  type: land
+  alligence: USSR
+  res: 2
+  pop: 1
+  muster: 2
+Sevastopol:
+  type: land
+  alligence: USSR
+  res: 0
+  pop: 0
+  muster: 0

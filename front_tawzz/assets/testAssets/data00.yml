@@ -1,0 +1,29 @@
+adict(
+actions:
+  xset(
+    {
+    ('Germany', 
+    xset(
+      {
+        (xset({'Ruhr', 'Berlin', 'Konigsberg'}), 
+          xset({'Tank', 'Infantry', 'Carrier', 'Fortress', 'AirForce', 'Submarine', 'Fleet'})), 
+        (xset({'Munich'}), 
+          xset({'Fortress', 'Tank', 'AirForce', 'Infantry'}))
+      })
+    ), 
+    ('Italy', 
+    xset(
+      {
+        (xset({'Rome', 'Milan', 'Tripoli'}), 
+          xset({'Tank', 'Infantry', 'Carrier', 'Fortress', 'AirForce', 'Submarine', 'Fleet'}))
+      }))
+    }), 
+messages:
+  , 
+created:
+  (Ottawa, New_York, Washington, Irish_Sea, North_Atlantic_Ocean, Mid_Atlantic_Ocean, South_Atlantic_Ocean, Rio_de_Janeiro, Dakar, Morocco, Algiers, Tunisia, Sfax, Gibraltar, Madeira_Sea, Lisbon, Madrid, Leon, Barcelona, Azores, Bay_of_Biscay, Dublin, Irminger_Sea, Iceland, Greenland_Sea, Norwegian_Sea, Nordkapp_Sea, North_Sea, English_Channel, Glasgow, London, Paris, Lorraine, Gascony, Marseille, Western_Mediterranean, Sardinia, Tyrrhenian_Sea, Malta, Sicily, Central_Mediterranean, Adriatic_Sea, Milan, Rome, Venice, Taranto, Tripoli, Cyrenaica, Amsterdam, Vienna, Munich, Ruhr, Berlin, Copenhagen, Oslo, Narvik, Gallivare, Stockholm, Petsamo, Helsinki, Barents_Sea, White_Sea, Gulf_of_Bothnia, Baltic_Sea, Riga, Konigsberg, Warsaw, Vilna, Lvov, Prague, Budapest, Croatia, Belgrade, Albania, Athens, Bucharest, Sofia, Aegean_Sea, Crete, Eastern_Mediterranean, Egypt, Suez, Sudan, Jordan, Iraq, Damascus, Red_Sea, Gulf_of_Aden, West_Indian_Ocean, East_Indian_Ocean, Arabian_Sea, Persian_Gulf, Bombay, Karachi, Delhi, Kabul, Shiraz, Tehran, Abadan, Tabriz, Kars, Sinope, Adana, Ankara, Izmir, Istanbul, Southern_Caspian_Sea, Northern_Caspian_Sea, Eastern_Black_Sea, Western_Black_Sea, Sea_of_Azov, Archangel, Vologda, Gorky, Perm, Urals, Western_Siberia, Leningrad, Moscow, Murmansk, Penza, Ufa, Kazakhstan, Belorussia, Bryansk, Voronezh, Stalingrad, Grozny, Turkmenistan, Kuban, Georgia, Baku, Kiev, Kharkov, Odessa, Sevastopol, 0, 1, 2, 3), 
+updated:
+  (), 
+removed:
+  ()
+)

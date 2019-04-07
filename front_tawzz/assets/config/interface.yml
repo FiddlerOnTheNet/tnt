@@ -1,0 +1,68 @@
+
+messages:
+  incoming:
+    place_cadre: [player, tile, unit_type]
+
+  outgoing:
+    create: [obj_id, type, properties]
+    # after init a list of all tiles, borders, and units is sent to frontend
+    destroy: [obj_id, type, properties]
+    move: [obj_id, updated_properties]
+
+old:  
+
+  messages:
+    incoming:
+      select: [player, obj_id]
+      info: [player, obj_id]
+      play_card: [player, obj_id, top]
+      save: [player]
+
+    outgoing:
+      create: [obj_id, type, properties]
+      destroy: [obj_id, type, properties]
+      move: [obj_id, updated_properties] # same as destroy + create copy
+      stat: [] # for victory points
+      message: [content] # direct pop-up
+
+  asset_types: # and properties
+    border:
+      obj_id: --int--
+      type: [Plains, Forest, Mountains, Coast, Strait, Ocean]
+    tile:
+      obj_id: --int--
+      type: [Land, Sea, Ocean]
+      owner: --nations--
+    unit:
+      obj_id: --int--
+      tile: --tiles--
+      type: --unit_types--
+      nationality: [Britain, France, USA, Germany, Italy, USSR, Independent]
+      cv: --int--
+    action_card:
+      obj_id: --int--
+      name: --str--
+      faction: [West, Axis, USSR]
+      wildcard: -- list of wild cards --
+      played: [true, false]
+      top_diplomacy: --minor nations--
+      bottom_diplomacy: --minor nations--
+      command_value: --int--
+      command_priority: --letter--
+    investment_card:
+      obj_id: --int--
+      name: --str--
+      faction: [West, Axis, USSR]
+      intelligence: --espionage--
+      played: [true, false]
+      factory_value: --int--
+      top_technology: --technologies--
+      bottom_technology: --technologies--
+      science_year: --int--
+      science_techs: --list of techs--
+    influence:
+      obj_id: --int--
+      faction: [West, Axis, USSR]
+      nation: --independent nations--
+
+

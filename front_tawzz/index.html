@@ -1,0 +1,300 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Game Frontend</title>
+    <link rel="stylesheet" type="text/css" href="./css/commonStyles.css" />
+    <link rel="stylesheet" type="text/css" href="./css/msStyles.css" />
+  </head>
+  <body>
+    <!-- #region HTML -->
+    <div id="rootDiv" style="position:absolute;width:1275px;height:825px;background-color:rgba(86, 182, 222);">
+      <svg width="100%" height="100%" style="padding:10px;box-sizing:border-box;">
+        <g id="board" viewBox="0 0 3400 2200">
+          <image id="imgMap" width="3400" height="2200" href="./assets/TTmap.jpg" />
+        </g>
+      </svg>
+
+      <div id="troopDisplay" class="popupStyle gridContainer hCenterScreen"></div>
+    </div>
+    <div id="cardDisplay">card display</div> 
+    <!-- #endregion html -->
+
+    <!-- #region standard script loading: js-yaml, w3.js, jquery... -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/js-yaml/3.12.2/js-yaml.js"></script>
+    <script src="https://www.w3schools.com/lib/w3.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <!-- #endregion panzoom -->
+    <!-- #region panzoom -->
+    <script src="https://unpkg.com/panzoom@7.1.2/dist/panzoom.min.js"></script>
+    <script src="./js/panzoom.js"></script>
+    <script>
+      document.getElementById("imgMap").addEventListener("dblclick", reset); //panzoom setup
+      reset();
+    </script>
+    <!-- #endregion panzoom -->
+    <!-- #region: SCRIPTS  -->
+    <script src="./js/helpers.js"></script>
+    <script src="./js/MS.js"></script>
+    <script src="./js/MSManager.js"></script>
+    <script src="./js/MTree.js"></script>
+    <script src="./js/MSelection.js"></script>
+    <script src="./js/MParser.js"></script>
+    <script src="./js/MScanner.js"></script>
+    <script src="./js/gameHelpers.js"></script>
+    <!-- #endregion: SCRIPTS  -->
+
+    <!-- #region GLOBALS -->
+    <script>
+      const playerFaction = 'West'; //set desired faction here
+      const rootDiv = document.getElementById("rootDiv");
+      const board = document.getElementById("board");
+      const troopDisplay = document.getElementById("troopDisplay");
+      const cardDisplay = document.getElementById("cardDisplay");
+
+      var Manager = new MSManager(board,troopDisplay,cardDisplay); // manages all game objects
+
+      var unitCount; //{'Germany': {'Infantry':16,...}} reserve info dictionary, local asset:unit_count.yml
+      var powerList; //['Germany',...,'USA']
+      var unitList; //['Infantry',...,'Carrier']
+      var actionDeck, investmentDeck;
+      var serverData; // json structure
+      var serverTree; // action tree from server
+      var selectionTree; // selection tree used in automatic selection process
+      var Selection; // an MSelection object created to handle navigating selection tree
+    </script>
+    <!-- #endregion GLOBALS -->
+
+    <!-- #region CORS server communication -->
+    <script>
+      //var backendServerUrl = "https://tawzz.pythonanywhere.com/"; // public server
+      //var backendServerUrl = "https://fetnt.pythonanywhere.com/"; // public server
+      var backendServerUrl = "http://localhost:5000/"; //local server
+      function sendurl(url, onResponse) {
+        url = backendServerUrl + url;
+        console.log("request sent: ", url);
+        w3.http(url, function() {
+          if (this.readyState == 4 && this.status == 200) {
+            onResponse(this.responseText);
+          }
+        });
+      }
+      function sendInit(faction, callback) {
+        sendurl("init/hotseat/" + faction, callback);
+      }
+      function sendAction(faction, selectedLabels,selectedIds){
+        let actionval=selectedLabels.join('+');
+        //'/action/<faction>/<action:vals>'
+        let url = 'action/'+faction+'/'+actionval;
+        sendurl(url,data=>doAction(data,selectedIds));
+      }
+    </script>
+    <!-- #endregion CORS server communication -->
+
+    <!-- #region cards TODO: >> MSManager, name createDecks, type='deck' -->
+    <script>
+      function makeDecks() {
+        //console.log("HALLLLLLLLLLLLLLLLLLLLO");
+        let wDeckArea = 251;
+        let hDeckArea = 354;
+        let pos = {x: 166, y: 998};
+        let centerActionDeck = {x: 166, y: 998}; // center of action deck
+        let centerInvestmentDeck = {x: 3233, y: 966}; // center of investment deck
+        let rounding = 6;
+        let actionDeckColor = "orange";
+        actionDeck = new MS("actionDeck", board)
+          .roundedRect({w: 251, h: 354, fill: actionDeckColor, rounding: 6})
+          .textMultiline({txt: ["Action", "Deck"], fz: 28, fill: "white"})
+          .roundedRect({w: 251, h: 354, fill: "transparent", rounding: 6})
+          .setPos(centerActionDeck.x, centerActionDeck.y)
+          .draw();
+        investmentDeck = new MS("investmentDeck", board)
+          .roundedRect({w: 253, h: 356, fill: "sienna", rounding: 6})
+          .textMultiline({txt: ["Investment", "Deck"], fz: 28, fill: "white"})
+          .roundedRect({w: 253, h: 356, fill: "transparent", rounding: 6})
+          .setPos(centerInvestmentDeck.x, centerInvestmentDeck.y)
+          .draw();
+        //console.log("halloooooooooooooooooooo");
+        makeButton(
+          actionDeck,
+          ev => {
+            console.log("drawing card from ", actionDeck.id);
+          },
+          "yellow",
+          0.3,
+          "red",
+          0.3
+        );
+        makeButton(
+          investmentDeck,
+          ev => {
+            console.log("drawing card from ", investmentDeck.id);
+          },
+          "yellow",
+          0.3,
+          "red",
+          0.3
+        );
+      }
+      function makeButton(ms, handler, hoverColor, hoverAlpha, pressColor, pressAlpha) {
+        ms.elem.addEventListener("click", ev => {
+          if (ms.isEnabled) handler(ev);
+        });
+        ms.elem.addEventListener("mouseenter", ev => {
+          if (ms.isEnabled) ms.setOverlayColor(hoverColor, hoverAlpha);
+        });
+        ms.elem.addEventListener("mouseleave", ev => {
+          if (ms.isEnabled) ms.setOverlayColor("transparent");
+        });
+        ms.elem.addEventListener("mousedown", ev => {
+          if (ms.isEnabled) ms.setOverlayColor(pressColor, pressAlpha);
+        });
+        ms.elem.addEventListener("mouseup", ev => {
+          if (ms.isEnabled) ms.setOverlayColor(hoverColor, hoverAlpha);
+        });
+      }
+    </script>
+    <!-- #endregion use case 1: lobby > game setup -->
+
+    <!-- #region cadre prototypes -->
+    <script>
+      function hideCadrePrototypes() {
+        troopDisplay.style.display = "none";
+      }
+    </script>
+    <!-- #endregion cadre prototypes -->
+
+    <!-- #region setup -->
+    <script>
+      function setup() {
+        hideCadrePrototypes();
+        loadRegions(Manager);
+        loadCadrePrototypes(Manager, unit_count_dictionary => {
+          unitCount = unit_count_dictionary;
+          powerList = Object.keys(unitCount);
+          unitList = Object.keys(unitCount["Germany"]);
+
+          // let manager know the type of an id 'Germany' or 'Tank'
+          powerList.map(x => Manager.createType(x, "power"));
+          unitList.map(x => Manager.createType(x, "unit"));
+
+          sendInit(playerFaction, Start); //Start();//
+        });
+      }
+    </script>
+    <!-- #endregion setup -->
+
+    <!-- #region *** TESTING *** -->
+    <script>
+      function Start(dataFromServer) {
+        //testCadrePrototypeDisplay(); //geht
+        //testServerData(dataFromServer); //geht
+        console.log('start________________')
+        //console.log(dataFromServer)
+
+        testSelectionCycle(dataFromServer);
+      }
+      function processServerData(dataFromServer) {
+        // updates serverData (gamestate), returns server action tree
+        console.log(dataFromServer);
+        serverData = JSON.parse(dataFromServer);
+
+        let actions = serverData.actions;
+        console.log(actions);
+        let sActions = JSON.stringify(actions);
+        console.log(sActions)
+
+        // parse tree
+        let newServerTree = new MParser(sActions).tree; 
+        newServerTree.print();
+        return newServerTree;
+      }
+      var fakeIdCounter=0;
+      function doAction(dataFromServer,involvedIds){
+        // assume action is permitted
+        //for now use fake dataFromServer
+        let command = 'placeCadre'; // TODO: somehow extract from dataFromServer
+        let newId = 'id_'+fakeIdCounter;
+        Manager.action(command,newId,involvedIds); 
+      }
+
+      function onObjectSelected(ev) {
+        //2a. user selects requested level: push selection, increase level and again, goto 1
+        // all this is done in MSelection class
+        // how do I know I am in requested level? typelist[level] is the type selected
+
+        let idSelected = evToId(ev); // id of elem selected by user
+        let typeSelected = Manager.getType(idSelected);
+        let idlist = Manager.getIdParts(idSelected);
+        let isComplete = Selection.processSelection(idlist,typeSelected);
+
+        console.log(Selection.stack);
+
+        if (isComplete){
+          let selectedLabels = Selection.getSelectedNodeLabels();
+          console.log('--------------selected labels:',selectedLabels.toString())
+          let selectedIds = Manager.transformToIds(selectedLabels);
+          console.log('selected ids:',selectedIds)
+
+          
+          sendAction(playerFaction,selectedLabels,selectedIds); //selectedIds oder selectedLabels?
+        } else {
+          // unselect unchose objects that are selected
+          let idlists = Selection.getChoices();
+          Manager.displayChoices(idlists, onObjectSelected);
+        }
+
+        // // this id is used to
+        // // 1. update Selection process
+        
+        // if (isComplete) {
+        //   //from Selection get order of items along branch to send back to server
+        //   //possible reverse order into the format server asks for
+        //   //sho submit button
+        // } else if (Selection.isSameLevelSelection()) {
+        //   //hide irrelevant objects
+        //   //highlight or display new relevant objects
+        // } else {
+          
+        //   // Manager.unhighlightPreviousSelection();
+        //   // Manager.displayObjectsForSelection(idlists, onObjectSelected);
+        // }
+
+        // console.log("HIER BIN ICH MIT: ", ev.target);
+        // let id = evToId(ev);
+        // let obj = this.manager.get(id);
+        // let type = this.manager.getType(id);
+        // let keys = ["Glasgow", "Britain"]; // this.manager.getIdParts(id);
+        // keys = ["Marseille", "France"]; // this.manager.getIdParts(id);
+        // //keys = ['France','Tank'];//
+        
+        // // try finding expected selection:
+      }
+      function testSelectionCycle(dataFromServer) {
+        //transform into serverTree
+        serverTree = processServerData(dataFromServer);
+
+        let selInfo = Manager.convertActionTree(serverTree);
+        Selection = new MSelection(selInfo);
+
+        //from selectionTree selection is completely automatic:
+        //1. highlight choices wrt tree levels (some levels are combined to one)
+        let idlists = Selection.getChoices();
+        Manager.displayChoices(idlists, onObjectSelected);
+      }
+
+      function testServerData(data) {
+        console.log(data);
+      }
+      function testCadrePrototypeDisplay() {
+        let cadreIds = cartesian(powerList, unitList, "_");
+        cadreIds = powerList.map(p => unitList.map(u => Manager.getCombinedId(p, u))).flat();
+        console.log(cadreIds);
+
+        displayCadrePrototypes(choose(cadreIds, 12));
+      }
+
+      setup();
+    </script>
+    <!-- #endregion *** TESTING *** -->
+  </body>
+</html>

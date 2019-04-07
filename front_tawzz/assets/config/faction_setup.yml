@@ -1,0 +1,112 @@
+Axis:
+  members:
+    Germany:
+      type: Great Power
+      HomeCapital: Berlin
+      SubCapitals: [Ruhr]
+    Italy:
+      type: Major Power
+      HomeCapital: Rome
+      Colonies: [Libya]
+  
+  MainCapital: Berlin
+  SubCapitals: [Ruhr, Rome]
+  Handlimit: 7
+  FactoryCost: [5,4,3]
+  EmergencyCommand: 4
+  initial_ind: 12
+
+  setup:
+    action_cards: 14
+    cadres:
+      Germany:
+        Berlin: 6
+        Ruhr: 4
+        Munich: 2
+        Konigsberg: 2
+      Italy:
+        Rome: 4
+        Milan: 2
+        Tripoli: 2
+      
+USSR:
+  members:
+    USSR:
+      type: Great Power
+      HomeCapital: Moscow
+      SubCaptials: [Leningrad, Baku]
+  
+  MainCapital: Moscow
+  SubCapitals: [Leningrad, Baku]
+  Handlimit: 6
+  FactoryCost: [7,5,3]
+  EmergencyCommand: 2
+  enable_Winter: True
+  initial_ind: 9
+
+  setup:
+    action_cards: 6
+    cadres:
+      USSR:
+        Moscow: 3
+        Leningrad: 2
+        Baku: 2
+        Kiev: 1
+        Kharkov: 1
+        Odessa: 1
+        Stalingrad: 1
+        Urals: 1
+
+West:
+  members:
+    Britain:
+      type: Great Power
+      HomeCapital: London
+      SubCapitals: [Delhi]
+      Colonies: [Canada, Gibraltar, Malta, Middle East, India]
+    France:
+      type: Major Power
+      HomeCapital: Paris
+      Colonies: [French North Africa, Syria]
+#    USA:   # only add as member once US becomes a satellite
+#      type: Major Power
+#      HomeCapital: Washington
+
+  MainCapital: London
+  SubCapitals: [Delhi, Paris, Washington]
+  Handlimit: 8
+  FactoryCost: [6,5,4,3]
+  EmergencyCommand: 2
+  enable_USA: True
+  initial_ind: 7
+
+  setup:
+    action_cards: 8
+    units:
+      - nationality: Britain
+        tile: London
+        type: Fleet
+        cv: 4
+      - nationality: Britain
+        tile: Gibraltar
+        type: Fortress
+        cv: 1
+      - nationality: Britain
+        tile: Karachi
+        type: Fortress
+        cv: 1
+      - nationality: France
+        tile: Lorraine
+        type: Fortress
+        cv: 3
+    cadres:
+      Britain:
+        London: 3
+        Delhi: 2
+        Glasgow: 1
+        Bombay: 1
+        Suez: 1
+      France:
+        Paris: 2
+        Marseille: 1
+        Algiers: 1

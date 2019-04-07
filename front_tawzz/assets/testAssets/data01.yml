@@ -1,0 +1,23 @@
+xset({
+  ('Italy', 
+   xset({
+    (
+     xset({'Milan', 'Rome', 'Tripoli'}), 
+     xset({'Carrier', 'Fleet', 'Tank', 'Infantry', 'Submarine', 'AirForce', 'Fortress'})
+    )
+   })
+  ), 
+  (
+    'Germany', 
+    xset({
+      (
+        xset({'Konigsberg', 'Ruhr', 'Berlin'}), 
+        xset({'Carrier', 'Fleet', 'Tank', 'Infantry', 'Submarine', 'AirForce', 'Fortress'})
+      ), 
+      (
+        xset({'Munich'}), 
+        xset({'Tank', 'Infantry', 'AirForce', 'Fortress'})
+      )
+    })
+  )
+})

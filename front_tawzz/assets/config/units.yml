@@ -1,0 +1,71 @@
+Fortress:
+  priority: 1
+  type: 'G'
+  move: 0
+  A: 2
+  N: 3
+  G: 4
+  S: 3
+AirForce:
+  rebase: 1
+  priority: 2
+  type: 'A'
+  move: 2
+  A: 3
+  N: 1
+  G: 1
+  S: 1
+Carrier:
+  rebase: 1
+  doubleHit: 1
+  priority: 3
+  type: 'N'
+  move: 3
+  A: 2
+  N: 2
+  G: 1
+  S: 2
+Submarine:
+  rebase: 1
+  priority: 4
+  type: 'S'
+  move: 2
+  A: 0
+  N: 1
+  G: 0
+  S: 1
+Fleet:
+  rebase: 1
+  priority: 5
+  type: 'N'
+  move: 3
+  A: 1
+  N: 3
+  G: 1
+  S: 2
+Tank:
+  priority: 6
+  type: 'G'
+  move: 3
+  A: 0
+  N: 0
+  G: 2
+  S: 0
+Infantry:
+  priority: 7
+  type: 'G'
+  move: 2
+  A: 1
+  N: 1
+  G: 3
+  S: 0
+Convoy:
+  not_placeable: 1
+  priority: 8
+  doubleHit: 1
+  type: 'N'
+  move: 2
+  A: 0
+  N: 0
+  G: 0
+  S: 0
