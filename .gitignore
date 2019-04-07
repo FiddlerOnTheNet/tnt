@@ -6,4 +6,3 @@ config/cards/
 check_cards.ipynb
 saves/
 .gitignore
-*.py
