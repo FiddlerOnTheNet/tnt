@@ -2,7 +2,7 @@ from flask import Flask, render_template, send_from_directory
 from flask_cors import CORS
 from flask_util import ActionConverter
 import json
-app = Flask(__name__, static_folder='static')
+app = Flask(__name__, static_folder='_front')
 CORS(app)
 
 app.url_map.converters['action'] = ActionConverter
@@ -87,9 +87,101 @@ def format_msg_to_python(msg):
 
 FORMAT_MSG = format_msg_for_frontend
 
-@app.route("/")
-def ping():
-	return 'Backend active: use "init" to init game'
+@app.route('/lauren/')
+def defaultRouteStaticFiles():
+    return send_from_directory(app.static_folder, "front_lauren/index.html") 
+
+@app.route('/lauren/<fname>')
+def staticFilesMainDir(fname):
+    filename = fname 
+    return send_from_directory(app.static_folder, "front_lauren/"+fname) 
+
+@app.route('/lauren/css/<fname>')
+def staticFilesCSSDir(fname):
+    filename = fname 
+    return send_from_directory(app.static_folder, 'front_lauren/css/'+fname) 
+
+@app.route('/lauren/js/<fname>')
+def staticFilesJSDir(fname):
+    filename = fname 
+    return send_from_directory(app.static_folder, 'front_lauren/js/'+fname) 
+
+@app.route('/lauren/assets/<fname>')
+def staticFilesAssetsDir(fname):
+    filename = fname 
+    return send_from_directory(app.static_folder, 'front_lauren/assets/'+fname) 
+
+@app.route('/lauren/assets/markers/<fname>')
+def staticFilesAssetsMarkersDir(fname):
+    filename = fname 
+    return send_from_directory(app.static_folder, 'front_lauren/assets/markers/'+fname) 
+
+@app.route('/lauren/assets/config/<fname>')
+def staticFilesAssetsConfigDir(fname):
+    filename = fname 
+    return send_from_directory(app.static_folder, 'front_lauren/assets/config/'+fname) 
+
+@app.route('/felix/')
+def defaultRouteStaticFilesFelix():
+    return send_from_directory(app.static_folder, "front_felix/index.html") 
+
+@app.route('/felix/<fname>')
+def staticFilesMainDirFelix(fname):
+    filename = fname 
+    return send_from_directory(app.static_folder, "front_felix/"+fname) 
+
+@app.route('/felix/css/<fname>')
+def staticFilesCSSDirFelix(fname):
+    filename = fname 
+    return send_from_directory(app.static_folder, 'front_felix/css/'+fname) 
+
+@app.route('/felix/js/<fname>')
+def staticFilesJSDirFelix(fname):
+    filename = fname 
+    return send_from_directory(app.static_folder, 'front_felix/js/'+fname) 
+
+@app.route('/felix/assets/<fname>')
+def staticFilesAssetsDirFelix(fname):
+    filename = fname 
+    return send_from_directory(app.static_folder, 'front_felix/assets/'+fname) 
+
+@app.route('/tawzz/')
+def defaultRouteStaticFilesTawzz():
+    return send_from_directory(app.static_folder, "front_tawzz/index.html") 
+
+@app.route('/tawzz/<fname>')
+def staticFilesMainDirTawzz(fname):
+    filename = fname 
+    return send_from_directory(app.static_folder, "front_tawzz/"+fname) 
+
+@app.route('/tawzz/css/<fname>')
+def staticFilesCSSDirTawzz(fname):
+    filename = fname 
+    return send_from_directory(app.static_folder, 'front_tawzz/css/'+fname) 
+
+@app.route('/tawzz/js/<fname>')
+def staticFilesJSDirTawzz(fname):
+    filename = fname 
+    return send_from_directory(app.static_folder, 'front_tawzz/js/'+fname) 
+
+@app.route('/tawzz/assets/<fname>')
+def staticFilesAssetsDirTawzz(fname):
+    filename = fname 
+    return send_from_directory(app.static_folder, 'front_tawzz/assets/'+fname) 
+
+@app.route('/tawzz/assets/markers/<fname>')
+def staticFilesAssetsMarkersDirTawzz(fname):
+    filename = fname 
+    return send_from_directory(app.static_folder, 'front_tawzz/assets/markers/'+fname) 
+
+@app.route('/tawzz/assets/config/<fname>')
+def staticFilesAssetsConfigDirTawzz(fname):
+    filename = fname 
+    return send_from_directory(app.static_folder, 'front_tawzz/assets/config/'+fname) 
+
+# @app.route("/")
+# def ping():
+#    return 'Backend active: use "init" to init game'
 
 @app.route('/save/<filename>')
 def save(filename=None):
