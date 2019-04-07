@@ -1,0 +1,44 @@
+/* used for MS (game objects) */
+.ms {
+  fill: rgba(0, 0, 0, 0.1);
+  z-index: 0;
+}
+.ms:hover {
+  fill: rgba(0, 0, 0, 0.4);
+  z-index: 10;
+}
+.overlay {
+  opacity:0.1;
+}
+.overlay.highlighted{
+  fill:yellow;
+  opacity:.3;
+}
+.overlay.selected{
+  fill:red;
+  opacity:.4;
+}
+.overlay:hover {
+  opacity:0.5;
+}
+.highlighted {
+  fill: rgba(255, 255, 0, 0.3);
+}
+.highlighted:hover {
+  fill: rgba(255, 220, 0, 0.3);
+  cursor:pointer;
+}
+.selected {
+  fill: rgba(255, 0, 0, 0.3);
+}
+.selected:hover {
+  fill: rgba(255, 0, 0, 0.5);
+  cursor:pointer;
+}
+
+/* #region mil font */
+@font-face {
+  font-family: "Military RPG";
+  src: url("../assets/Military_RPG.ttf"); /* seems to need relatove path?!? */
+}
+/* #endregion mil font */
