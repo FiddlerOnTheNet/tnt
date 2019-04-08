@@ -179,9 +179,9 @@ def staticFilesAssetsConfigDirTawzz(fname):
     filename = fname 
     return send_from_directory(app.static_folder, 'front_tawzz/assets/config/'+fname) 
 
-# @app.route("/")
-# def ping():
-#    return 'Backend active: use "init" to init game'
+@app.route("/")
+def ping():
+   return 'Backend active: use "init" to init game'
 
 @app.route('/save/<filename>')
 def save(filename=None):

@@ -5,6 +5,18 @@ function addAll(akku, other) {
   }
   return akku;
 }
+function orderFromTo(lst,fromOrder,toOrder){
+  let res = [];
+  for (let i = 0; i < lst.length; i++) {
+    res.push(lst[fromOrder.indexOf(toOrder[i])]);
+    
+  }
+  //console.log(res)
+  return res;
+}
+function someFunction() {
+  //console.log("hhhhhhhhhhhhhhhhhhhhhhhhhhh");
+}
 function cartesian(s1, s2, sep = "_") {
   let res = [];
   for (const el1 of s1) {
@@ -22,7 +34,9 @@ function cartesianOf(ll) {
   }
   return cart;
 }
-function contains(arr,el){return arr.includes(el);}
+function contains(arr, el) {
+  return arr.includes(el);
+}
 function choose(arr, n) {
   var result = new Array(n),
     len = arr.length,
@@ -36,13 +50,17 @@ function choose(arr, n) {
   return result;
 }
 function empty(arr) {
-  return arr===undefined||arr===null||!Array.isArray(arr)?true : arr.length == 0;
+  return arr === undefined || arr === null || !Array.isArray(arr) ? true : arr.length == 0;
 }
-function first(arr){return arr.length>0? arr[0]:null;}
+function first(arr) {
+  return arr.length > 0 ? arr[0] : null;
+}
 function keepOnlyElements(func, lst) {
   return lst.filter(func);
 }
-function last(arr){return arr.length>0? arr[arr.length-1]:null;}
+function last(arr) {
+  return arr.length > 0 ? arr[arr.length - 1] : null;
+}
 function sameList(l1, l2) {
   // compares 2 lists of strings if have same strings in it
   if (l1.length != l2.length) return false;
@@ -62,7 +80,7 @@ function without(arr, elementToRemove) {
 //#region dictionary helpers
 function isType(sType, val) {
   // uses existing (global) config data to infer type from val
-  //console.log("isType called!",sType, val, regions, units);
+  ////console.log("isType called!",sType, val, regions, units);
   switch (sType) {
     case "region":
       return val in regions;
@@ -92,7 +110,7 @@ function blackOrWhite(cssHSLA, maxLumForWhite = 88) {
   let hue = getHue(cssHSLA);
   if (hue > 40 && hue < 90) maxLumForWhite = 60;
   let result = l <= maxLumForWhite ? "white" : "black";
-  //console.log('lum('+l+'), hue('+hue+') : '+result);
+  ////console.log('lum('+l+'), hue('+hue+') : '+result);
   return result;
 }
 
@@ -424,14 +442,14 @@ function getColorHexes(x) {
 
 function getLuminosity(cssHSLA) {
   //return luminosity in percent
-  //console.log('css: ',cssHSLA);
+  ////console.log('css: ',cssHSLA);
   let ints = allNumbers(cssHSLA);
   return ints[2];
 }
 
 function getHue(cssHSLA) {
   //return luminosity in percent
-  //console.log('css: ',cssHSLA);
+  ////console.log('css: ',cssHSLA);
   let h = firstNumber(cssHSLA);
   return h;
 }
@@ -452,10 +470,10 @@ function hslToHsv(h, s, l) {
   let newh = h;
   l /= 100.0;
   s /= 100.0;
-  console.log(h, s, l);
+  //console.log(h, s, l);
   let newv = (2 * l + s * (1 - Math.abs(2 * l - 1))) / 2;
   let news = (2 * (newv - l)) / newv;
-  console.log(newh, news, newv);
+  //console.log(newh, news, newv);
   let rgb = hsvToRgb(newh, news, newv);
   let result = [h, s, l, newh, news, newv];
   result.push(rgbToHex(rgb[0], rgb[1], rgb[2]));
@@ -472,10 +490,10 @@ function hsvToHsl(h, s, v) {
   let newh = h;
   l /= 100.0;
   v /= 100.0;
-  console.log(h, s, v);
+  //console.log(h, s, v);
   let newl = 0.5 * v * (2 - s);
   let news = (v * s) / (1 - Math.abs(2 * l - 1));
-  console.log(newh, news, newl);
+  //console.log(newh, news, newl);
   return {
     h: newh,
     s: news,
@@ -541,7 +559,7 @@ function rgbToHsv(r, g, b) {
 
 //#region file helpers
 function loadJSON(path, callback) {
-  console.log(path);
+  //console.log(path);
   var xobj = new XMLHttpRequest();
   xobj.overrideMimeType("application/json");
   xobj.open("GET", path, true); //path example: '../news_data.json'
@@ -553,23 +571,23 @@ function loadJSON(path, callback) {
   xobj.send(null);
 }
 function loadYML(path, callback) {
-  //console.log(path);
+  ////console.log(path);
   res = undefined;
   $.get(path) // eg. '/common/resources/LessonContentsLv01Ln01.yml'
     .done(function(data) {
-      //console.log("File load complete");
+      ////console.log("File load complete");
       var yml = jsyaml.load(data);
-      //console.log(yml);
+      ////console.log(yml);
       var jsonString = JSON.stringify(data);
       var json = $.parseJSON(jsonString);
-      //console.log(jsonString);
-      //console.log(json);
+      ////console.log(jsonString);
+      ////console.log(json);
       callback(yml);
     });
 }
 //usage: https://stackoverflow.com/questions/48073151/read-local-json-file-into-variable
 // loadJSON(function(json) {
-//   console.log(json); // this will log out the json object
+//   //console.log(json); // this will log out the json object
 // });
 //#endregion file helpers
 
@@ -589,14 +607,14 @@ function closestParent(elem, selector) {
   return null;
 }
 function findParentWithId(elem) {
-  //console.log(elem);
+  ////console.log(elem);
   while (elem && !elem.id) {
     elem = elem.parentNode;
   }
-  //console.log("parent with id: ", elem);
+  ////console.log("parent with id: ", elem);
   return elem;
 }
-function evToId(ev){
+function evToId(ev) {
   let elem = findParentWithId(ev.target);
   return elem.id;
 }
@@ -670,7 +688,7 @@ function allNumbers(s) {
 function eraseSpaces(s) {
   let i = 0;
   while (s.includes("  ")) {
-    //console.log(i++ + ": ", s);
+    ////console.log(i++ + ": ", s);
     s = s.replace("  ", " ");
     s = s.replace(" {", "{");
     s = s.replace(" (", "(");
@@ -707,13 +725,13 @@ function padSep(sep, n, args) {
   return s.substring(0, s.length - 1);
 }
 function startsWith(s, sSub) {
-  //console.log('startWith: s='+s+', sSub='+sSub,typeof(s),typeof(sSub));
+  ////console.log('startWith: s='+s+', sSub='+sSub,typeof(s),typeof(sSub));
   return s.substring(0, sSub.length) == sSub;
 }
 function stringAfter(sFull, sSub) {
-  //console.log('s='+sFull,'sub='+sSub)
+  ////console.log('s='+sFull,'sub='+sSub)
   let idx = sFull.indexOf(sSub);
-  //console.log('idx='+idx)
+  ////console.log('idx='+idx)
   if (idx < 0) return "";
   return sFull.substring(idx + sSub.length);
 }
@@ -727,14 +745,14 @@ function stringBefore(sFull, sSub) {
 //#region type and conversion helpers
 function getTypeOf(param) {
   let type = typeof param;
-  //console.log("typeof says:" + type);
+  ////console.log("typeof says:" + type);
   if (typeof param == "object") {
     type = param.constructor.name;
   }
   let lType = type.toLowerCase();
   if (lType.includes("event")) type = "event";
-  //console.log("this param is of type: " + type);
-  //console.log(param);
+  ////console.log("this param is of type: " + type);
+  ////console.log(param);
   return type;
 }
 function isEvent(param) {
@@ -749,22 +767,22 @@ function isMS(param) {
 function convertToMS(p) {
   let res = undefined;
   if (isMS(p)) {
-    //console.log("convertToMS: isMS ", p);
+    ////console.log("convertToMS: isMS ", p);
     res = p;
   } else if (isEvent(p)) {
-    //console.log("convertToMS: isEvent ", p);
+    ////console.log("convertToMS: isEvent ", p);
     p = p.target;
     res = findParentWithId(p);
     res = MS.byId[res.id];
   } else if (isString(p)) {
     //assume that this is the id
-    //console.log("convertToMS: isString ", p);
+    ////console.log("convertToMS: isString ", p);
     res = MS.byId[p];
   } else {
     //assume some ui element
-    //console.log("convertToMS: else ", res);
+    ////console.log("convertToMS: else ", res);
   }
-  //console.log("convertToMS: RESULT=", res);
+  ////console.log("convertToMS: RESULT=", res);
   return res;
 }
 //#endregion
@@ -796,4 +814,3 @@ function calculateDims(n, sz = 60, minRows = 1) {
   }
   return {rows: rows, cols: cols, gap: gap, padding: padding, width: w};
 }
-

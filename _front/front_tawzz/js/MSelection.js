@@ -29,7 +29,7 @@ class MSelection {
     if (!t){
       console.log('processSelection: ERROR CANNOT FIND SELECTED NODES');return false;
     }
-    console.log('selected Nodes:');
+    //console.log('selected Nodes:');
     t.map(x=>console.log(x.data.toString()));
     if (typeSelected == this.choiceTypes[this.index]){
       // new type has been selected

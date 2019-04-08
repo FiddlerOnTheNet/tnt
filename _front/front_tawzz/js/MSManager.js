@@ -26,7 +26,7 @@ const SZ = {
 const SEPARATOR = "_";
 const fs = {
   Infantry: {fz: 0.5, x: 0.5, y: 4 / 6},
-  Fleet: {fz: 0.35, x: 0.45, y: 4 / 6},
+  Fleet: {fz: 0.35, x: 0.45, y: 5 / 6},
   Convoy: {fz: 0.35, x: 0.5, y: 5 / 6},
   Tank: {fz: 0.25, x: 0.54, y: 4 / 6},
   AirForce: {fz: 0.6, x: 0.5, y: 4 / 6},
@@ -45,10 +45,10 @@ class MSManager {
   get(id) {
     //returns MS with this id
     if (!(id in this.byId)) {
-      console.log("ERROR object[" + id + "] not created!");
+      //console.log("ERROR object[" + id + "] not created!");
     }
 
-    //console.log(id, this.byId[id])
+    ////console.log(id, this.byId[id])
     return this.byId[id].ms;
   }
   getType(id) {
@@ -58,7 +58,7 @@ class MSManager {
     return id.split(SEPARATOR);
   }
   getCombinedId(...args) {
-    //console.log(args.join(SEPARATOR))
+    ////console.log(args.join(SEPARATOR))
     return args.join(SEPARATOR);
   }
   getPowerFromCadrePrototypeId(id) {
@@ -79,8 +79,8 @@ class MSManager {
     let cadre = new MS(id);
     cadre.setElement(elem, 100, 100);
     cadre.interactiveChild = cadre.elem.getElementsByClassName("overlay")[0];
-    console.log("creating cadre proto ", id);
-    console.log(cadre.interactiveChild);
+    //console.log("creating cadre proto ", id);
+    //console.log(cadre.interactiveChild);
     cadre.elem.addEventListener("click", this.clickHandler.bind(this));
     this.byId[id] = {ms: cadre, type: "proto"};
   }
@@ -169,7 +169,7 @@ class MSManager {
     const overlayRect = outerRect.cloneNode();
     overlayRect.setAttribute("class", "overlay");
     overlayRect.setAttribute("style", `fill:rgba(128,128,128,.1);`);
-    //console.log(overlayRect);
+    ////console.log(overlayRect);
     //overlayRect.style = `fill:transparent;stroke-width:0;`;
     //overlayRect.classList.add('region');
 
@@ -206,13 +206,76 @@ class MSManager {
   }
 
   //not yet implemented
-  createCadre(id, power, unit) {
+  createCadre(id, power, unit, region, cv, showDataToFactionList) {
     // let elem = this.createCadreG(power, unit, 1, 50);
     // let cadre = new MS(id, board);
     // cadre.setElement(elem, 50, 50);
     // this.byId[id] = cadre;
+    console.log('*** Manager.createCadre)',id,power,unit,region,cv);
 
-    let cadre = new MS(id,board).roundedRect().circle();
+    //power provides color
+    let color = troopColors[power];
+    //unit provides text and symbol
+    let name = troopInfo[unit][0];
+    let letter = troopInfo[unit][1];
+    let scaleFactor = troopInfo[unit][2];
+
+    // cv provides number
+    //region provides pos
+    let posx = this.get(region).x+-20;
+    let posy = this.get(region).y+40;
+
+    console.log(posx,posy)
+
+    let val = cv;
+
+    let percentage = 6.25;
+    let sz = 60; //SZ.cadrePrototype;
+
+    const fs1 = {
+      Infantry: {fz: 0.5, x: 0.5, y: 1/6},
+      Fleet: {fz: 0.25, x: 0.45, y: 1/4},
+      Convoy: {fz: 0.35, x: 0.5, y: 1/6},
+      Tank: {fz: 0.25, x: 0.54, y: 1/5.5},
+      AirForce: {fz: 0.6, x: 0.5, y: 1/5},
+      Carrier: {fz: 0.25, x: 0.5, y: 1/6},
+      Submarine: {fz: 0.25, x: 0.5, y: 1/5},
+      Fortress: {fz: 0.6, x: 0.5, y: 1/5.5}
+    };
+    let f = fs1[unit];
+    
+    
+
+    let cadre = new MS(id,board)
+      .roundedRect({w: sz, h: sz, fill: color, rounding: sz*.1})
+      .roundedRect({className: "ms",w: sz*.9, h: sz*.9, fill: "rgba(0,0,0,.5)", rounding: sz*.08})
+      .text({fz: sz / 6, y:(-.3*sz), txt: name, fill: "orange"})
+      .text({
+        family: "Military RPG",
+        fz: sz * f.fz,
+        y:sz*f.y,
+         txt: letter,
+        fill: "rgba(255,255,255,.3)"
+      })
+      .text({fz: sz / 2, y:sz*.1, txt: val, fill: "black"})
+      .setPos(posx,posy).draw();
+
+    // let cadre = new MS(id,board)
+    //   .roundedRect({w: 100, h: 100, x: 50, y: 50, fill: color, rounding: 10})
+    //   .roundedRect({className: "ms",w: 90, h: 90, x: 50, y: 50, fill: "rgba(0,0,0,.5)", rounding: 8})
+    //   .text({fz: sz / 6, x: sz / 2, y: 30, txt: name, fill: "orange"})
+    //   .text({
+    //     family: "Military RPG",
+    //     fz: sz * f.fz,
+    //     x: sz * f.x,
+    //     y: sz * f.y,
+    //     txt: letter,
+    //     fill: "rgba(255,255,255,.3)"
+    //   })
+    //   .text({fz: sz / 2, x: sz / 2, y: 70, txt: val, fill: "black"})
+    //   .setPos(posx,posy).draw();
+
+    //console.log(cadre);
     return cadre;
   }
   create(id, typelist, parent, sz) {}
@@ -292,7 +355,7 @@ class MSManager {
     const overlayRect = outerRect.cloneNode();
     overlayRect.setAttribute("class", "overlay");
     overlayRect.setAttribute("style", `fill:white;`);
-    //console.log(overlayRect);
+    ////console.log(overlayRect);
     //overlayRect.style = `fill:transparent;stroke-width:0;`;
     //overlayRect.classList.add('region');
 
@@ -342,7 +405,7 @@ class MSManager {
     let val = cv;
 
     let id = this.getCombinedId(power, unit);
-    //console.log('creating: ',id)
+    ////console.log('creating: ',id)
 
     let percentage = 6.25;
     let sz = 100; //SZ.cadrePrototype;
@@ -378,8 +441,8 @@ class MSManager {
 
     this.byId[id] = cadre;
 
-    //if (id == "Germany_Infantry"){console.log(this.byId[id])}
-    //console.log(cadre,cadre.elem)
+    //if (id == "Germany_Infantry"){//console.log(this.byId[id])}
+    ////console.log(cadre,cadre.elem)
   }
 
   convertActionTree(t) {
@@ -391,12 +454,12 @@ class MSManager {
     //from list of types to select, infer selection sequence and howManyLevelsPerSelection
     // (eg., for cadre prototype selection: power & unit levels are combined to type proto
     let res = this.typelistTranslator(typelist);
-    //console.log('res',res)
+    ////console.log('res',res)
     let levelTypes = res.levelTypes;
     let levelsPerChoice = res.levelsPerChoice;
     let choiceTypes = res.choiceTypes;
     let orderIndices = levelTypes.map(x => typelist.indexOf(x));
-    console.log(levelTypes, orderIndices, levelsPerChoice, choiceTypes);
+    //console.log(levelTypes, orderIndices, levelsPerChoice, choiceTypes);
 
     //from selection sequence, serverTree is transformed into selectionTree
 
@@ -408,31 +471,31 @@ class MSManager {
     // assumes t has 1 type by level and all branches have same length
 
     let branch = t.branchlist(-1, false)[0];
-    //console.log('branch:')
-    //console.log(branch)
+    ////console.log('branch:')
+    ////console.log(branch)
     let types = [];
     for (const arr of branch) {
       types.push(this.getType(arr[0]));
     }
-    console.log(types); // eg. ["power", "unknown", "region", "unit"]
+    //console.log(types); // eg. ["power", "unknown", "region", "unit"]
     return types;
   }
   displayChoices(idlists, handler) {
     //depending on ids,types and objects, manager knows how selection is facilitated
     //assumes that all objects are of same type
-    console.log("*********manager");
+    //console.log("*********manager");
     let idlist = idlists.map(l => this.getCombinedId(...l));
-    console.log(idlist);
+    //console.log(idlist);
     let objects = idlist.map(id => this.get(id));
 
     // if objects
     let type = this.getType(idlist[0]);
-    console.log("objects[0] is.............", objects[0]);
-    console.log("the type is.............", type);
-    console.log("the type is.............", type);
+    //console.log("objects[0] is.............", objects[0]);
+    //console.log("the type is.............", type);
+    //console.log("the type is.............", type);
     if (type == "proto") {
       // need to display cadres
-      console.log("sollte eigentlich prototypes displayen!!!");
+      //console.log("sollte eigentlich prototypes displayen!!!");
       clearElement(troopDisplay);
       this.displayCadrePrototypes(idlist);
     }
@@ -444,7 +507,7 @@ class MSManager {
     troopDisplay.style.display = "grid";
     // d.classList.remove('hidden'); //TODO: why does this not work?!?!?
     var n = ids.length;
-    console.log(ids.toString());
+    //console.log(ids.toString());
     var sz = SZ.cadrePrototype;
     for (var i = 0; i < n; i++) {
       let cadre = this.get(ids[i]);
@@ -480,9 +543,9 @@ class MSManager {
     return transDict[skey];
   }
   getByType(ids, type) {
-    console.log(ids);
+    //console.log(ids);
     let res = ids.filter(id => this.byId[id].type == type)[0];
-    console.log("!!!!!!!!!!!!!!!!!!!! ", res);
+    //console.log("!!!!!!!!!!!!!!!!!!!! ", res);
     return res;
   }
   placeCadre(msCadre, msRegion) {
@@ -490,21 +553,21 @@ class MSManager {
     //msCadre.setPos(msRegion.x,msRegion.y).draw();
     msCadre.tag("region", msRegion.id);
   }
-  action(command, newId, ids) {
-    let objects = ids.map(x => this.get(x));
-    switch (command) {
-      case "placeCadre":
-        //look for region
-        let msRegion = this.get(this.getByType(ids, "region"));
-        console.log(msRegion);
-        //look for proto
-        let primitiveIds = ids.map(id => this.getIdParts(id)).flat();
-        let power = this.getByType(primitiveIds, "power");
-        let unit = this.getByType(primitiveIds, "unit");
-        //create board cadre from proto
-        //let msCadre = this.createCadre(newId, power, unit);
-        // place cadre on region
-        //this.placeCadre(msCadre, msRegion);
-    }
-  }
+  // action(command, newId, ids) {
+  //   let objects = ids.map(x => this.get(x));
+  //   switch (command) {
+  //     case "placeCadre":
+  //       //look for region
+  //       let msRegion = this.get(this.getByType(ids, "region"));
+  //       //console.log(msRegion);
+  //       //look for proto
+  //       let primitiveIds = ids.map(id => this.getIdParts(id)).flat();
+  //       let power = this.getByType(primitiveIds, "power");
+  //       let unit = this.getByType(primitiveIds, "unit");
+  //       //create board cadre from proto
+  //       //let msCadre = this.createCadre(newId, power, unit);
+  //       // place cadre on region
+  //       //this.placeCadre(msCadre, msRegion);
+  //   }
+  // }
 }

@@ -1,6 +1,6 @@
 class MParser{
   constructor(data){ 
-    //console.log('hallo',data);
+    ////console.log('hallo',data);
     this.tokens = Array.isArray(data)?data:new MScanner(data).tokenList;
     let t = new MTree([]);
     t=this.parse(this.tokens,t,[t]);
@@ -9,7 +9,7 @@ class MParser{
     //t.print();
   }
   parse(tokens,t,trees){
-    // console.log('parse ',tokens,t);
+    // //console.log('parse ',tokens,t);
     if (tokens[0]=='@SS' && tokens[1]=="@TS") {
       //this is a set of tuples
       return this.parseSetOfTuples(tokens,t,trees);
@@ -30,7 +30,7 @@ class MParser{
     }
   }
   parseSetOfTuples(tokens,t,trees){
-    //console.log('parseSetOfTuples ',tokens,t);
+    ////console.log('parseSetOfTuples ',tokens,t);
     tokens.splice(0,1,"@CO");
     while(tokens[0] == "@CO"){
       tokens.splice(0,1);
@@ -43,7 +43,7 @@ class MParser{
     return t;
   }
   parseComplexTuple(tokens,t,trees){
-    // console.log('parseComplexTuple ',tokens,t);
+    // //console.log('parseComplexTuple ',tokens,t);
     tokens.splice(0,1,"@CO");
     let troot = new MTree([]);
     let t1 = t;//troot;
@@ -53,21 +53,21 @@ class MParser{
       t1.addChildTree(this.parse(this.tokens,t2,[t1]));
       t1 = t2;
     }
-    // console.log('tree',t);t.print()
+    // //console.log('tree',t);t.print()
     if (tokens[0]!="@TE"){console.log('ERROR TUPLE END!!!!');}
     else tokens.splice(0,1); //
     return t;
   }
   parseLiteral(tokens,t,trees){
-    // console.log('parseLiteral ',tokens,t);
+    // //console.log('parseLiteral ',tokens,t);
     t.addData(tokens[0]);
-    // console.log('after adding literal to t:',t.data.toString())
+    // //console.log('after adding literal to t:',t.data.toString())
     tokens.splice(0,1);
     //t.print();
     return t;
   }
   parseSetOfStrings(tokens,t,trees){
-    // console.log('parseSetOfStrings ',tokens,t);
+    // //console.log('parseSetOfStrings ',tokens,t);
     tokens.splice(0,1,"@CO");
     while(tokens[0] == "@CO"){
       tokens.splice(0,1);

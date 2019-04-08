@@ -44,7 +44,7 @@ class MS {
   }
   draw() {
     if (this.isFloating) {
-      console.log(id, "cannot be drawn since does not have a parent!");
+      //console.log(id, "cannot be drawn since does not have a parent!");
     } else if (!this.isDrawn) {
       this.isDrawn = true;
       this.parent.appendChild(this.elem);
@@ -90,7 +90,7 @@ class MS {
     if (!clNow.includes(className)) {
       ch.setAttribute("class", clNow + " " + className);
     }
-    //console.log(ch);
+    ////console.log(ch);
   }
   removeClass(className) {
     let ch = this.interactiveChild; //elem.childNodes[0];
@@ -99,7 +99,7 @@ class MS {
       var ret = clNow.replace(className, "");
       ch.setAttribute("class", ret);
     }
-    //console.log(ch);
+    ////console.log(ch);
   }
   hasClass(className) {
     let ch = this.interactiveChild; //elem.childNodes[0];
@@ -155,12 +155,12 @@ class MS {
   select() {
     this.addClass("selected");
     this.removeClass("highlighted");
-    //console.log(this.id, " selected");
+    ////console.log(this.id, " selected");
   }
   unselect() {
     this.removeClass("selected");
     this.addClass("highlighted");
-    console.log(this.id, " unselected");
+    //console.log(this.id, " unselected");
   }
   makeSelectable() {
     this.highlight();
@@ -175,7 +175,7 @@ class MS {
 
   //#region color
   saveFill(indexOfChild) {
-    //console.log(this.elem.childNodes)
+    ////console.log(this.elem.childNodes)
     indexOfChild = Math.min(this.elem.childNodes.length - 1, indexOfChild);
     let child = this.elem.childNodes[indexOfChild];
     if (child.tagName == "circle" || child.tagName == "text") {
@@ -183,10 +183,10 @@ class MS {
     } else {
       this.basicFill = child.getAttribute("style");
     }
-    //console.log(child.tagName,this.basicFill);
+    ////console.log(child.tagName,this.basicFill);
   }
   restoreFill(indexOfChild) {
-    //console.log(this.elem.childNodes)
+    ////console.log(this.elem.childNodes)
     indexOfChild = Math.min(this.elem.childNodes.length - 1, indexOfChild);
     let child = this.elem.childNodes[indexOfChild];
     if (child.tagName == "circle" || child.tagName == "text") {
@@ -194,7 +194,7 @@ class MS {
     } else {
       child.setAttribute("style", this.basicFill);
     }
-    //console.log(child.tagName,this.basicFill);
+    ////console.log(child.tagName,this.basicFill);
   }
   setBackgroundColor(color, alpha = 1) {
     //das ist fill of childNode[0]
@@ -221,9 +221,9 @@ class MS {
     }
   }
   getColor(fill, alpha = 1) {
-    //console.log(fill);
+    ////console.log(fill);
     if (Array.isArray(fill)) {
-      return `rgba(${rgbArray[0]},${rgbArray[1]},${rgbArray[2]},${alpha})`;
+      return `rgba(${fill[0]},${fill[1]},${fill[2]},${alpha})`;
     } else if (fill[0] != "#" && alpha != 1) {
       return `${fill};opacity:${alpha}`;
     } else return fill;
@@ -340,9 +340,9 @@ class MS {
     }
 
     r.setAttribute("points", spts);
-    console.log("set points");
-    console.log(spts1, "\r\n"); //points.map(p=>{return(p.x+','+y+' ')}).join());
-    console.log(spts);
+    //console.log("set points");
+    //console.log(spts1, "\r\n"); //points.map(p=>{return(p.x+','+y+' ')}).join());
+    //console.log(spts);
     r.setAttribute("stroke", "black");
     r.setAttribute("stroke-width", 5);
     r.setAttribute("style", `fill:${fill};`);
@@ -427,7 +427,7 @@ class MS {
     unit = "px"
   }) {
     let h = txt.length * fz;
-    //console.log("height", h);
+    ////console.log("height", h);
     let yStart = y - h / 2 + fz / 2;
     let maxW = 0;
     for (const t of txt) {
