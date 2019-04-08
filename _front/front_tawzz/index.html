@@ -15,7 +15,7 @@
       </svg>
 
       <div id="troopDisplay" class="popupStyle gridContainer hCenterScreen"></div>
-      <div id="submitButton" class="centerScreen hidden"><button onclick="submitChoice()">Submit</button></div>
+      <!-- <div id="submitButton" class="centerScreen hidden"><button onclick="submitChoice()">Submit</button></div> -->
     </div>
     <div id="cardDisplay">card display</div>
     <!-- #endregion html -->
@@ -46,7 +46,7 @@
 
     <!-- #region GLOBALS -->
     <script>
-      const playerFaction = "West"; //set desired faction here
+      const playerFaction = "Axis"; //set desired faction here
       const rootDiv = document.getElementById("rootDiv");
       const board = document.getElementById("board");
       const troopDisplay = document.getElementById("troopDisplay");
@@ -216,7 +216,7 @@
           let o = created[id];
           switch (o.obj_type) {
             case "unit":
-              console.log(o,' is a unit to be created')
+              console.log(o,' is unit to be created')
               // place cadre on region
               let power = o.nationality;
               let unit = o.type;
@@ -274,7 +274,7 @@
       }
       function showSubmitButton(selectedList) {
         SelectedIds = selectedList;
-        document.getElementById("submitButton").classList.remove("hidden");
+        //document.getElementById("submitButton").classList.remove("hidden");
       }
       function submitChoice() {
         //console.log("submitted");
@@ -338,7 +338,7 @@
           //console.log("selected ids:", selectedIds);
 
           //soll ja nur den submit button displayen!!!
-          showSubmitButton(selectedIds);
+          //showSubmitButton(selectedIds);
 
           sendAction(playerFaction, selectedLabels, selectedIds); //selectedIds oder selectedLabels?
         } else {
